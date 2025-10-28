@@ -80,7 +80,7 @@ function App() {
           onToggleFavorite={handleToggleFavorite}
         />
       )}
-      <div className="pb-16 md:pb-0"></div> {/* Spacer for bottom nav */}
+      <div className="pb-16"></div> {/* Spacer for bottom nav */}
       <BottomNavBar favoriteCount={favorites.length} />
     </div>
   );

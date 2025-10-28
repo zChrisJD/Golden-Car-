@@ -7,7 +7,7 @@ interface BottomNavBarProps {
 
 const BottomNavBar: React.FC<BottomNavBarProps> = ({ favoriteCount }) => {
   return (
-    <footer className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 shadow-lg border-t dark:border-gray-700 md:hidden">
+    <footer className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 shadow-lg border-t dark:border-gray-700">
       <div className="flex justify-around items-center h-16">
         {/* Placeholder for other nav items */}
         <button className="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400">
