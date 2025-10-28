@@ -17,7 +17,7 @@ const CarCard: React.FC<CarCardProps> = ({ car, onSelectCar, isFavorite, onToggl
 
   return (
     <div 
-        className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 cursor-pointer relative"
+        className="bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 cursor-pointer relative border border-gray-800 hover:border-amber-500"
         onClick={() => onSelectCar(car.vin)}
     >
       <button
@@ -33,13 +33,13 @@ const CarCard: React.FC<CarCardProps> = ({ car, onSelectCar, isFavorite, onToggl
       </button>
       <img className="w-full h-56 object-cover object-center" src={car.imageUrl} alt={`${car.make} ${car.model}`} />
       <div className="p-6">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-white">{car.make} {car.model}</h2>
-        <p className="text-sm text-gray-600 dark:text-gray-400">{car.year}</p>
+        <h2 className="text-xl font-bold text-white">{car.make} {car.model}</h2>
+        <p className="text-sm text-gray-400">{car.year}</p>
         <div className="mt-4 flex justify-between items-center">
-          <p className="text-lg font-semibold text-yellow-600 dark:text-yellow-400">
+          <p className="text-lg font-semibold text-amber-400">
             R$ {car.price.toLocaleString('pt-BR')}
           </p>
-          <p className="text-sm text-gray-500 dark:text-gray-300">
+          <p className="text-sm text-gray-300">
             {car.mileage.toLocaleString('pt-BR')} km
           </p>
         </div>

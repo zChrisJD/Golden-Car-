@@ -37,17 +37,20 @@ const TradeInEstimator: React.FC<TradeInEstimatorProps> = ({ targetCarPrice }) =
             setIsLoading(false);
         }
     };
+    
+    const inputClasses = "block w-full rounded-md border border-gray-600 shadow-sm bg-gray-700 text-white p-2 focus:border-amber-500 focus:ring-amber-500 sm:text-sm";
+
 
     return (
-        <div>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">Use nossa ferramenta com IA para obter uma estimativa rápida do valor de troca do veículo do seu cliente.</p>
+        <div className="bg-gray-800 rounded-lg shadow-lg p-6">
+            <p className="text-gray-300 mb-6">Use nossa ferramenta com IA para obter uma estimativa rápida do valor de troca do veículo do seu cliente.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" name="make" placeholder="Marca (ex: Fiat)" onChange={handleInputChange} className="input-style" />
-                <input type="text" name="model" placeholder="Modelo (ex: Uno)" onChange={handleInputChange} className="input-style" />
-                <input type="number" name="year" placeholder="Ano (ex: 2020)" onChange={handleInputChange} className="input-style" />
-                <input type="number" name="mileage" placeholder="Quilometragem (ex: 50000)" onChange={handleInputChange} className="input-style" />
-                <select name="condition" value={tradeInCar.condition} onChange={handleInputChange} className="input-style col-span-1 md:col-span-2">
+                <input type="text" name="make" placeholder="Marca (ex: Fiat)" onChange={handleInputChange} className={inputClasses} />
+                <input type="text" name="model" placeholder="Modelo (ex: Uno)" onChange={handleInputChange} className={inputClasses} />
+                <input type="number" name="year" placeholder="Ano (ex: 2020)" onChange={handleInputChange} className={inputClasses} />
+                <input type="number" name="mileage" placeholder="Quilometragem (ex: 50000)" onChange={handleInputChange} className={inputClasses} />
+                <select name="condition" value={tradeInCar.condition} onChange={handleInputChange} className={`${inputClasses} col-span-1 md:col-span-2`}>
                     <option value="Excelente">Excelente</option>
                     <option value="Bom">Bom</option>
                     <option value="Razoável">Razoável</option>
@@ -57,7 +60,7 @@ const TradeInEstimator: React.FC<TradeInEstimatorProps> = ({ targetCarPrice }) =
             <button
                 onClick={handleEstimate}
                 disabled={isLoading}
-                className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-black bg-amber-500 hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:bg-gray-600 disabled:text-gray-400 disabled:cursor-not-allowed"
             >
                 {isLoading ? <Spinner /> : 'Estimar Valor de Troca'}
             </button>
@@ -65,15 +68,14 @@ const TradeInEstimator: React.FC<TradeInEstimatorProps> = ({ targetCarPrice }) =
             {error && <p className="mt-4 text-red-500 text-center">{error}</p>}
 
             {estimate && (
-                <div className="mt-6 p-4 bg-yellow-50 dark:bg-gray-700 rounded-lg text-center">
-                    <p className="text-sm text-yellow-800 dark:text-yellow-200">Estimativa de Valor para Troca</p>
-                    <p className="text-3xl font-bold text-yellow-600 dark:text-yellow-400">
+                <div className="mt-6 p-4 bg-gray-900 rounded-lg text-center">
+                    <p className="text-sm text-amber-200">Estimativa de Valor para Troca</p>
+                    <p className="text-3xl font-bold text-amber-400">
                         R$ {estimate.min.toLocaleString('pt-BR')} - R$ {estimate.max.toLocaleString('pt-BR')}
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">{estimate.disclaimer}</p>
+                    <p className="text-xs text-gray-400 mt-2">{estimate.disclaimer}</p>
                 </div>
             )}
-             <style>{`.input-style { display: block; width: 100%; border-radius: 0.375rem; border: 1px solid #D1D5DB; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); background-color: #F9FAFB; color: #111827; padding: 0.5rem 0.75rem; } .dark .input-style { border-color: #4B5563; background-color: #374151; color: #F9FAFB; } .input-style:focus { outline: 2px solid transparent; outline-offset: 2px; --tw-ring-color: #FBBF24; box-shadow: 0 0 0 2px var(--tw-ring-color); border-color: var(--tw-ring-color); }`}</style>
         </div>
     );
 };

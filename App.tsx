@@ -67,7 +67,7 @@ function App() {
   }, [selectedCarVin, cars]);
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen font-sans">
+    <div className="bg-black min-h-screen font-sans">
       <Header />
       {selectedCar ? (
         <CarDetailView car={selectedCar} onBack={handleBackToList} />
